@@ -19,7 +19,7 @@ CREATE CONSTRAINT serverNameExists FOR (n:Server) REQUIRE n.serverName IS NOT NU
 CREATE CONSTRAINT assetNrExistsSvr FOR (n:Server) REQUIRE n.assetNr IS NOT NULL;
 
 CREATE CONSTRAINT uniqueRefNotNull FOR (n:Snapshot) REQUIRE n.ref IS NOT NULL;
-CREATE CONSTRAINT uniqueRefNotNull FOR (n:Snapshot) REQUIRE n.type IS NOT NULL;
+CREATE CONSTRAINT uniqueTypeNotNull FOR (n:Snapshot) REQUIRE n.type IS NOT NULL;
 CREATE CONSTRAINT uniqueRefExists FOR (n:Snapshot) REQUIRE n.ref IS UNIQUE;
 
 CREATE CONSTRAINT purlNotNull FOR (n:SoftwareComponent) REQUIRE n.purl IS NOT NULL;
