@@ -1,4 +1,23 @@
-# IT Service Graph Demo Explanation
+# IT Service Graph demo with DevSecOps addition
+
+The Demo is using Neo4j and NeoDash building an IT Service Graph UI, where DevSecOps data has been added to show this use case.
+The vulnerability analysis has been done using SCA and SAST scanners. Anybody can replace the demo data with real SBOMs and reports from Trivy and Bearer.
+
+The Demo is aimed to show a Knowledge Graph consisting of IT Infrastructure Data as well as IT Services and Customer Information and information that helps people responsible for security to have 'actionable insights'.
+
+## Screenshots
+
+#### Overall
+![Overview and DevSecOps adoption](https://github.com/jelmerdereus/itservicegraph-sca-data/blob/main/graphics/devsecops_adoption.png?raw=true)
+
+#### SCA overview
+![SCA results](https://github.com/jelmerdereus/itservicegraph-sca-data/blob/main/graphics/devsecops_sca.png?raw=true)
+
+#### SAST overview
+![SAST results](https://github.com/jelmerdereus/itservicegraph-sca-data/blob/main/graphics/devsecops_sast.png?raw=true)
+
+
+## Demo explanation
 
 The Demo is using Neo4j and NeoDash building an IT Service Graph UI.
 
