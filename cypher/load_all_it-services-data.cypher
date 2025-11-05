@@ -6,7 +6,7 @@
 
 LOAD CSV WITH HEADERS FROM $filename AS line FIELDTERMINATOR ','
 WITH line.dcname AS dcName, line.dccity as dcCity, line.dclat AS dcLat, line.dclong AS dcLong 
-MERGE (a:Datacenter {dcName: dcName})
+MERGE (a:DCLocation {dcName: dcName})
 ON CREATE SET a.dcName = dcName,
 a.dcCity = dcCity,
 a.dcLat = dcLat,
@@ -27,13 +27,13 @@ a.serverLeaseEnd = date(leaseEnd)
 RETURN count(*); 
 
 LOAD CSV WITH HEADERS FROM $filename AS line FIELDTERMINATOR ','
-WITH line.servername AS serverName, line.cluster AS cluster, line.datacenter AS dcName
+WITH line.servername AS serverName, line.cluster AS cluster //, line.datacenter AS dcName
 MERGE (a:Cluster {clusterName: cluster})
-WITH cluster, serverName, dcName
+WITH cluster, serverName //, dcName
 MATCH (a:Server {serverName: serverName})
-MATCH (d:Datacenter {dcName: dcName})
+// MATCH (d:Datacenter {dcName: dcName})
 MATCH (c:Cluster {clusterName: cluster})
-MERGE (a)-[:LOCATED_IN]->(d)
+// MERGE (a)-[:LOCATED_IN]->(d) --> sollte hier nicht angelegt werden!
 MERGE (a)-[:BELONGS_TO]->(c)
 RETURN count(*);
 
@@ -43,22 +43,23 @@ RETURN count(*);
 :param filename => 'https://raw.githubusercontent.com/neo4j-field/itservicegraph/main/data/rz-sections-server.csv';
 
 LOAD CSV WITH HEADERS FROM $filename AS line FIELDTERMINATOR ';'
-WITH line.datacenter AS dcName, line.dcSecName AS dcSecName, line.rackAmountUnits AS rackAmountUnits, line.rackAmountFreeUnits AS rackAmountFreeUnits, line.rackManufacturer AS rackManufacturer, line.rackName AS rackName, line.rackRZRow AS rackRZRow
-MATCH (d:Datacenter {dcName: dcName})
-MERGE (s:Section {dcSecName: dcSecName})
-ON CREATE SET s.dcSecGeo = d.dcGeoLoc
-MERGE (a:Rack {rackName: rackName})
-ON CREATE SET a.rackAmountUnits = rackAmountUnits,
-a.rackAmountFreeUnits = rackAmountFreeUnits,
-a.rackManufacturer = rackManufacturer
-WITH rackName, dcName, dcSecName
-MATCH (a:Rack {rackName: rackName})
-MATCH (d:Datacenter {dcName: dcName})
-MATCH (s:Section {dcSecName: dcSecName})
-MERGE (d)-[:IN_SECTION]->(s)
-MERGE (s)-[:IN_RACK]->(a)
+WITH line.servername AS serverName, line.datacenter AS dcName, line.dcSecName AS dcSecName, line.rackAmountUnits AS rackAmountUnits, line.rackAmountFreeUnits AS rackAmountFreeUnits, line.rackManufacturer AS rackManufacturer, line.rackName AS rackName, line.rackRZRow AS rackRZRow
+CREATE (d:Datacenter {dcName: dcName})
+WITH d, dcName, serverName, dcSecName, rackAmountFreeUnits, rackAmountUnits, rackManufacturer, rackName, rackRZRow
+MATCH (dl:DCLocation {dcName: dcName})
+CREATE (d)-[:HAS_LOCATION]->(dl)
+WITH d, serverName, dcSecName, rackAmountFreeUnits, rackAmountUnits, rackManufacturer, rackName, rackRZRow
+MATCH (sv:Server {serverName: serverName})
+CREATE (s:Section {dcSecName: dcSecName})
+  SET s.dcSecGeo = d.dcGeoLoc
+CREATE (a:Rack {rackName: rackName})
+  SET a.rackAmountUnits = rackAmountUnits,
+  a.rackAmountFreeUnits = rackAmountFreeUnits,
+  a.rackManufacturer = rackManufacturer
+CREATE (sv)-[:LOCATED_IN]->(d)
+CREATE (d)-[:IN_SECTION]->(s)
+CREATE (s)-[:IN_RACK]->(a)
 RETURN count(*);
-
 
 // load software, services and customer
 
@@ -66,8 +67,9 @@ RETURN count(*);
 
 LOAD CSV WITH HEADERS FROM $filename AS line FIELDTERMINATOR ';'
 WITH line.appOwner AS swOwner, line.appName AS swName, line.appVersion AS swVersion
-MERGE (a:Software {swName: swName, swVersion: swVersion})
-ON CREATE SET a.swVendor = "Vendor-"+swName,
+MERGE (a:Software {swName: swName})
+ON CREATE SET a.swVersion = swVersion,
+a.swVendor = "Vendor-"+swName,
 a.swFirstSeen = date() - duration('P1Y'),
 a.swLastUpdated = date() - duration('P2Y'),
 a.swOwner = swOwner
@@ -135,8 +137,8 @@ RETURN count(*);
 
 LOAD CSV WITH HEADERS FROM $filename AS line FIELDTERMINATOR ';'
 WITH line.dc1 AS dc1, line.dc2 AS dc2, line.provider AS provider, line.thruput AS thruput, line.distance AS distance, line.roundtrip AS roundtrip
-MATCH(d1:Datacenter {dcName: dc1})
-MATCH(d2:Datacenter {dcName: dc2})
+MATCH(d1:DCLocation {dcName: dc1})
+MATCH(d2:DCLocation {dcName: dc2})
 CREATE (d1)-[r:HAS_WAN_CONNECTION]->(d2)
 SET r.provider = provider,
 r.thruput = toFloat(thruput),
