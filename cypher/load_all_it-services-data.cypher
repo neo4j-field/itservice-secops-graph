@@ -2,7 +2,7 @@
 // Load generated IT Service Graph Demo Data
 // To run the following in Neo4j Workspace (AuraDB), remove the remarks and run only the Cypher statements!
 
-:param filename => 'https://raw.githubusercontent.com/neo4j-field/itservicegraph/main/data/rz.csv';
+:param filename => 'https://raw.githubusercontent.com/neo4j-field/itservice-secops-graph/main/data/rz.csv';
 
 LOAD CSV WITH HEADERS FROM $filename AS line FIELDTERMINATOR ','
 WITH line.dcname AS dcName, line.dccity as dcCity, line.dclat AS dcLat, line.dclong AS dcLong 
@@ -14,7 +14,7 @@ a.dcLocLat = dcLong,
 a.dcGeoLoc = point({latitude: toFLoat(dcLat), longitude: toFLoat(dcLong)})
 RETURN count(*);
 
-:param filename => 'https://raw.githubusercontent.com/neo4j-field/itservicegraph/main/data/server.csv';
+:param filename => 'https://raw.githubusercontent.com/neo4j-field/itservice-secops-graph/main/data/server.csv';
 
 LOAD CSV WITH HEADERS FROM $filename AS line FIELDTERMINATOR ','
 WITH line.servername AS serverName, line.manufacturer AS manufacturer, line.model AS model, line.assetNr AS assetNr, line.installDate AS installDate, line.serverLeaseEnd AS leaseEnd
@@ -40,7 +40,7 @@ RETURN count(*);
 
 // Load infra data
 
-:param filename => 'https://raw.githubusercontent.com/neo4j-field/itservicegraph/main/data/rz-sections-server.csv';
+:param filename => 'https://raw.githubusercontent.com/neo4j-field/itservice-secops-graph/main/data/rz-sections-server.csv';
 
 LOAD CSV WITH HEADERS FROM $filename AS line FIELDTERMINATOR ';'
 WITH line.servername AS serverName, line.datacenter AS dcName, line.dcSecName AS dcSecName, line.rackAmountUnits AS rackAmountUnits, line.rackAmountFreeUnits AS rackAmountFreeUnits, line.rackManufacturer AS rackManufacturer, line.rackName AS rackName, line.rackRZRow AS rackRZRow
@@ -63,7 +63,7 @@ RETURN count(*);
 
 // load software, services and customer
 
-:param filename => 'https://raw.githubusercontent.com/neo4j-field/itservicegraph/main/data/server-app-service-customer.csv';
+:param filename => 'https://raw.githubusercontent.com/neo4j-field/itservice-secops-graph/main/data/server-app-service-customer.csv';
 
 LOAD CSV WITH HEADERS FROM $filename AS line FIELDTERMINATOR ';'
 WITH line.appOwner AS swOwner, line.appName AS swName, line.appVersion AS swVersion
@@ -91,7 +91,7 @@ a.customerImportance = customerImportance,
 a.onboardingDate = date(datetime({epochmillis: apoc.date.parse(onboardingDate, "ms", "dd/MM/yyyy")}))
 RETURN count(*);
 
-:param filename => 'https://raw.githubusercontent.com/neo4j-field/itservicegraph/main/data/server-app-service-customer.csv';
+:param filename => 'https://raw.githubusercontent.com/neo4j-field/itservice-secops-graph/main/data/server-app-service-customer.csv';
 LOAD CSV WITH HEADERS FROM $filename AS line FIELDTERMINATOR ';'
 WITH line.servername AS serverName, line.serviceName AS serviceName, line.customerName AS customerName, line.appName AS swName, line.customerOnBoardDate AS onboardingDate
 MATCH (s:Server {serverName: serverName})
@@ -121,7 +121,7 @@ RETURN count(*);
 
 // load additonal hardware/software data
 
-:param filename => 'https://raw.githubusercontent.com/neo4j-field/itservicegraph/main/data/clusters.csv';
+:param filename => 'https://raw.githubusercontent.com/neo4j-field/itservice-secops-graph/main/data/clusters.csv';
 
 LOAD CSV WITH HEADERS FROM $filename AS line FIELDTERMINATOR ';'
 WITH line.cluster AS clusterName, line.clusterVersion AS clusterVersion, line.clusterSW AS clusterSW, line.clusterLastUpdate AS clusterLastUpdate
@@ -133,7 +133,7 @@ RETURN count(*);
 
 // load dc to dc data
 
-:param filename => 'https://raw.githubusercontent.com/neo4j-field/itservicegraph/main/data/dc2dc.csv';
+:param filename => 'https://raw.githubusercontent.com/neo4j-field/itservice-secops-graph/main/data/dc2dc.csv';
 
 LOAD CSV WITH HEADERS FROM $filename AS line FIELDTERMINATOR ';'
 WITH line.dc1 AS dc1, line.dc2 AS dc2, line.provider AS provider, line.thruput AS thruput, line.distance AS distance, line.roundtrip AS roundtrip
