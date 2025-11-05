@@ -1,5 +1,5 @@
 // load application to snapshot and software component data
-:param filename => 'https://raw.githubusercontent.com/jelmerdereus/itservice-secops-graph/main/data/app-components.csv';
+:param filename => 'https://raw.githubusercontent.com/neo4j-field/itservice-secops-graph/main/data/app-components.csv';
 
 LOAD CSV WITH HEADERS FROM $filename AS line FIELDTERMINATOR ';'
 WITH line.name AS swName, line.app_version AS swVersion, line.date AS scanDate, line.source AS source, line.component AS swComponent, line.component_version AS swComponentVer, line.purl AS purl, line.transitive AS transitive
@@ -16,7 +16,7 @@ ON CREATE SET co.transitive = transitive
 RETURN count(*);
 
 // load vulnerability to software component data
-:param filename => 'https://raw.githubusercontent.com/jelmerdereus/itservice-secops-graph/main/data/component-vulnerability.csv';
+:param filename => 'https://raw.githubusercontent.com/neo4j-field/itservice-secops-graph/main/data/component-vulnerability.csv';
 
 LOAD CSV WITH HEADERS FROM $filename AS line FIELDTERMINATOR ';'
 WITH line.date AS date, line.source as source, line.vulnerability_id as vulnerability_id, line.purl as purl, line.severity as severity, line.title as title, line.link as link, line.status as status, line.fixed_version as fixed_version, line.published_date as published_date, line.cvss_v3 as cvss_score
