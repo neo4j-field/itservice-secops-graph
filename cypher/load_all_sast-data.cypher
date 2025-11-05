@@ -1,5 +1,5 @@
 // load SAST finding to application data
-:param filename => 'https://raw.githubusercontent.com/jelmerdereus/itservice-secops-graph/main/data/app-sast-findings.csv';
+:param filename => 'https://raw.githubusercontent.com/neo4j-field/itservice-secops-graph/main/data/app-sast-findings.csv';
 
 LOAD CSV WITH HEADERS FROM $filename AS line FIELDTERMINATOR ';'
 WITH line.name as software, line.app_version as version, line.date as date, line.source as source, line.severity as severity, line.cwe as cwe_ids, line.rule as rule, line.title as title, line.link as link, line.description as description, line.file as file, line.location as location, line.ref as ref
