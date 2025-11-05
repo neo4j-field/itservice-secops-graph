@@ -13,4 +13,4 @@ MERGE (sn)-[:SNAPSHOT_OF]-(sw)
 MERGE (fn:Finding {ref: ref})
 ON CREATE SET fn.severity = severity, fn.cwe_ids = cwe_ids, fn.rule = rule, fn.title = title, fn.description = description, fn.link = link, fn.file = file, fn.location = location, fn.source = source
 MERGE (fn)-[:IDENTIFIED_IN]-(sn)
-RETURN count(*)
+RETURN count(*);
