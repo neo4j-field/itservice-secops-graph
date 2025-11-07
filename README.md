@@ -8,7 +8,8 @@ The Demo is aimed to show a Knowledge Graph consisting of IT Infrastructure Data
 ## Screenshots
 
 #### Overall
-![Overview and DevSecOps adoption](https://github.com/jelmerdereus/itservicegraph-sca-data/blob/main/graphics/devsecops_adoption.png?raw=true)
+![Overview and DevSecOps adoption](
+https://github.com/neo4j-field/itservice-secops-graph/blob/9d88ce17e6f336dfc06b9654aecd6114c77f5f68/graphics/secOps_Overview.png)
 
 #### SCA overview
 ![SCA results](https://github.com/jelmerdereus/itservicegraph-sca-data/blob/main/graphics/devsecops_sca.png?raw=true)
