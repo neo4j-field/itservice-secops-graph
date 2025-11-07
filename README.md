@@ -11,11 +11,21 @@ The Demo is aimed to show a Knowledge Graph consisting of IT Infrastructure Data
 ![Overview and DevSecOps adoption](
 https://github.com/neo4j-field/itservice-secops-graph/blob/9d88ce17e6f336dfc06b9654aecd6114c77f5f68/graphics/secOps_Overview.png)
 
+#### SCA drill down
+![SCA drill down](https://github.com/neo4j-field/itservice-secops-graph/blob/4af41c86772f8b98e38d49a5576494520b304737/graphics/secOps_sca-drill-down.png)
+
 #### SCA overview
-![SCA results](https://github.com/jelmerdereus/itservicegraph-sca-data/blob/main/graphics/devsecops_sca.png?raw=true)
+![SCA overview](https://github.com/neo4j-field/itservice-secops-graph/blob/4af41c86772f8b98e38d49a5576494520b304737/graphics/secOps_sca-overview.png)
+
+#### SCA search
+![SCA search Tab](https://github.com/neo4j-field/itservice-secops-graph/blob/4af41c86772f8b98e38d49a5576494520b304737/graphics/secOps_sca-search.png)
 
 #### SAST overview
-![SAST results](https://github.com/jelmerdereus/itservicegraph-sca-data/blob/main/graphics/devsecops_sast.png?raw=true)
+![SAST Overview Tab](https://github.com/neo4j-field/itservice-secops-graph/blob/4af41c86772f8b98e38d49a5576494520b304737/graphics/secOps_sast-overview.png)
+
+
+#### Affected Servers/Customers
+![Affected Servers/Customers Tab](https://github.com/neo4j-field/itservice-secops-graph/blob/4af41c86772f8b98e38d49a5576494520b304737/graphics/secOps_affected-customers.png)
 
 
 ## Demo explanation
