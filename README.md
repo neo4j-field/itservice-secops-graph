@@ -6,7 +6,7 @@ We added DevSecOps data to the original use case in order to show the power of k
 
 The vulnerability analysis has been done using SCA and SAST scanners. Anybody can replace the demo data with real SBOMs and reports from Trivy and Bearer.
 
-The Demo is aimed to show a Knowledge Graph consisting of IT Infrastructure Data as well as IT Services and Customer Information. Adding security and sbom information it helps people responsible for security to have 'actionable insights'.
+The Demo is aimed to show a Knowledge Graph consisting of IT Infrastructure Data as well as IT Services and Customer Information. Adding security and sbom information helps people responsible for security to have 'actionable insights'.
 
 ## Screenshots
 
