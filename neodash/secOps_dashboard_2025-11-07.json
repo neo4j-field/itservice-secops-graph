@@ -14,9 +14,9 @@
       "neodash_softwarecomponent_component_display": "spring-web",
       "neodash_another_variable ": "Trippledex",
       "neodash_selected_app": "Sonair",
-      "neodash_selected_application": "Zoolab",
-      "neodash_finding_title": "Permissive file creation",
-      "neodash_finding_title_display": "Permissive file creation",
+      "neodash_selected_application": "Namfix",
+      "neodash_finding_title": "Missing TLS MinVersion",
+      "neodash_finding_title_display": "Missing TLS MinVersion",
       "neodash_finding_snapshot": "Zoolab_7.3_2025-07-13T09:31:35.323936",
       "neodash_snapshot_software": "Zoolab",
       "neodash_snapshot_sw_server": "server-13"
@@ -473,9 +473,9 @@
               {
                 "field": "Customer Importance",
                 "condition": ">=",
-                "value": "9",
+                "value": "4",
                 "customization": "cell color",
-                "customizationValue": "#FA0505"
+                "customizationValue": "lightblue"
               },
               {
                 "field": "Customer Importance",
@@ -487,9 +487,9 @@
               {
                 "field": "Customer Importance",
                 "condition": ">=",
-                "value": "4",
+                "value": "9",
                 "customization": "cell color",
-                "customizationValue": "lightblue"
+                "customizationValue": "red"
               }
             ],
             "columnWidths": "[0.3,0.3,0.3,0.1]",
