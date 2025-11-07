@@ -1,9 +1,12 @@
-# IT Service Graph demo with DevSecOps addition
+# IT Service Graph demo with additional DevSecOps data
 
-The Demo is using Neo4j and NeoDash building an IT Service Graph UI, where DevSecOps data has been added to show this use case.
+The Demo is using Neo4j and NeoDash building an IT Service Graph UI that was exteded by a Security Operations Dashboard. The Demo was forked from this !(repo)[https://github.com/neo4j-field/itservicegraph] and extended with an additional SecOps Graph part (that also could stand on its own, but would be less valueable).
+
+We added DevSecOps data to the original use case in order to show the power of knowledge graphs and its flexibility.
+
 The vulnerability analysis has been done using SCA and SAST scanners. Anybody can replace the demo data with real SBOMs and reports from Trivy and Bearer.
 
-The Demo is aimed to show a Knowledge Graph consisting of IT Infrastructure Data as well as IT Services and Customer Information and information that helps people responsible for security to have 'actionable insights'.
+The Demo is aimed to show a Knowledge Graph consisting of IT Infrastructure Data as well as IT Services and Customer Information. Adding security and sbom information it helps people responsible for security to have 'actionable insights'.
 
 ## Screenshots
 
@@ -30,23 +33,14 @@ https://github.com/neo4j-field/itservice-secops-graph/blob/9d88ce17e6f336dfc06b9
 
 ## Demo explanation
 
-The Demo is using Neo4j and NeoDash building an IT Service Graph UI.
-
-The Demo is aimed to show a Knowledge Graph consisting of IT Infrastructure Data as well as IT Services and Customer Information. 
-
-The strength of a Graph Database is, to combine those data sources and provide more detailed and valuable insights, 
-that e.g. a CMDB alone cannot provide. The following Dashboard pages are available:
-
-- **Demo Explanation** ==> Contains this information and two graphics of the data model, one without properties, one with properties.
-- **IT Services Graph Overview** ==> Provides an Overview about Items in the Graph DB.
-- **WAN Connection Overview** ==> Overview of the WAN Network with details on the connections and providers.
-- **Service Impact Analysis** ==> Enables the user to analyse a server, service and software failure and simulate related issues for customer
-- **Reverse Service Down Impact Analysis** ==> Lets the users analyze, what cost and users are affected from a services downtime.
-- **Reverse Software Issue Analysis** ==> Similar to the latter Impact analysis, but from a software related issue 
-- **Reverse Affected Customer Analysis** ==> And a third one, that can be used to analyze downtime issues of services for a specific customers
-
-
 **NOTE:** All server, customer and software data in the graph was syntetically generated, thus names, version, etc. do not exist in the real world and are only used for demo purpose.
+
+The explanation of the IT Services Graph part of the demo, will not be done again. It can be found at the original repo that is linked above. Never the less, both dashboards can be found in the ```./neodash``` directory of the repo.
+
+The installation of the demo is the same, was explained in the original repo, but the addition of running more load scripts and also import the SecOps dashboard into Neodash.
+
+It is recommended to import both Dashboards to have the full view of the complete data and demo!
+
 
 In order to install the demo locally do the following:
 
