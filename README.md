@@ -1,6 +1,6 @@
 # IT Service Graph demo with additional DevSecOps data
 
-The Demo is using Neo4j and NeoDash building an IT Service Graph UI that was exteded by a Security Operations Dashboard. The Demo was forked from this ![repo](https://github.com/neo4j-field/itservicegraph) and extended with an additional SecOps Graph part (that also could stand on its own, but would be less valueable).
+The Demo is using Neo4j and NeoDash building an IT Service Graph UI that was exteded by a Security Operations Dashboard. The Demo was forked from this [repo](https://github.com/neo4j-field/itservicegraph) and extended with an additional SecOps Graph part (that also could stand on its own, but would be less valueable).
 
 We added DevSecOps data to the original use case in order to show the power of knowledge graphs and its flexibility.
 
@@ -35,7 +35,7 @@ https://github.com/neo4j-field/itservice-secops-graph/blob/9d88ce17e6f336dfc06b9
 
 **NOTE:** All server, customer and software data in the graph was syntetically generated, thus names, version, etc. do not exist in the real world and are only used for demo purpose. The SecOps data is REAL data and linked to the artificial software and services. This call all be replaced with real information easily!
 
-The installation of the IT Services Graph part of the demo, will not be described again. Please refer to the ![original repo](https://github.com/neo4j-field/itservicegraph). Never the less, all data and dashboards can be found in this repo! Only use the load scripts and dashboard files from here! 
+The installation of the IT Services Graph part of the demo, will not be described again. Please refer to the [original repo](https://github.com/neo4j-field/itservicegraph). Never the less, all data and dashboards can be found in this repo! Only use the load scripts and dashboard files from here! 
 
 As mentioned, the installation of the demo is the same and was explained in the original repo. But in addition it is required to run more load scripts and also import both, the IT Service and the SecOps dashboards (found in ```./neodas```) into Neodash. Please run the load scripts(found in ```./load```) in the order as they are named! Start with 1_... up to 4_...! That will guarantee, the data is complete and the knowledge graph is build up correctly.
 
